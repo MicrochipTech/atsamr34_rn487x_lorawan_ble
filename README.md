@@ -7,40 +7,46 @@
 </a>
 </p>
 
+## ⚠ Disclaimer
+
+<p><span style="color:red"><b>
+Subject to your compliance with these terms, you may use Microchip software and any derivatives exclusively with Microchip products. It is your responsibility to comply with third party license terms applicable to your use of third party software (including open source software) that may accompany Microchip software.<br>
+THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A PARTICULAR PURPOSE.<br>
+IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
+</span></p></b>
+
+> Interact with your peers about this software in [LoRa Forum](https://www.microchip.com/forums/f512.aspx).
+
+## Abstract
+
 **This sample code demonstrates how to provision & control a LoRaWAN end-device over a BLE connection between Smartphone App and a RN4870/71 module.**
-
-For more information on Microchip ATSAMR34 LoRa SiP and RN4870/71 BLUETOOTH 5 certified module, visit Microchip webpages: </br>
-
-https://www.microchip.com/design-centers/wireless-connectivity/low-power-wide-area-networks/lora-technology/sam-r34-r35
-https://www.microchip.com/wwwproducts/en/rn4870
-https://www.microchip.com/wwwproducts/en/rn4871
-
-
-## Get a Microchip ATSAMR34 Xplained Pro evaluation kit
-
-The ATSAMR34 Xplained Pro evaluation kit (DM320111) is a hardware platform used to evaluate the ATSAMR34 Low Power LoRa® Sub-GHz SiP. It is supported by Atmel Studio 7.0 IDE and a collection of sample codes are available from Advanced Software Framework (ASFv3) since the 3.44.0 release.
-The Xplained Pro MCU series evaluation kit includes an on-board Embedded Debugger (EDBG), and no external tools are necessary to program or debug the ATSAMR34.
-The kit offers a set of features that enable the user to get started with the ATSAMR34 Low Power LoRa® Sub-GHz SiP peripherals right away, and to understand how to integrate the device in your own design.
-The ATSAMR34 Xplained Pro kit contains the following items:
-- One ATSAMR34 Xplained Pro </br>
-- One external antenna </br>
-
-![](Doc/ATSAMR34Xpro.png)
-
-https://www.microchip.com/DevelopmentTools/ProductDetails/dm320111
-
-## Get a Microchip RN4871-PICTAIL evaluation kit
-
-The RN-4871-PICtail is a development board based on the ultra-compact Bluetooth 5 Low Energy RN4871 module. The RN4871 uses a simple ASCII command interface over the UART. 
-
-![](Doc/rn-4871-pictail.png)
-
-https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/RN-4871-PICTAIL
-
 
 ![](Doc/wiring_setup.png)
 
-## Get a RN4870/71 click board
+## Sample Applications
+
+[Clone/Download](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository) the current repo to get the software.
+
+## A la carte
+
+1. [Material required](#step1)
+2. [Software](#step2)
+3. [Hardware setup](#step3)
+4. [Mobile Apps](#step4)
+5. [TTN Provisioning](#step5)
+6. [Generating QR Code for End-device provisioning](#step6)
+7. [BLE + LoRaWAN in a single Application](#step7)
+6. [Run the demo](#step8)
+
+## Material required <a name="step1"></a>
+
+Purchase the <a href="https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/RN-4871-PICTAIL" target="_blank">RN4871-PICTAIL evaluation kit</a>
+</br>
+The RN-4871-PICtail is a development board based on the ultra-compact Bluetooth 5 Low Energy RN4871 module. The RN4871 uses a simple ASCII command interface over the UART. 
+![](Doc/rn-4871-pictail.png)
+</br>
+
+OR
 
 Alternatively, you can use a RN4870 or RN4871 click board from Mikroe.
 
@@ -56,30 +62,33 @@ https://www.microchip.com/Developmenttools/ProductDetails/ATMBUSADAPTER-XPRO
 With or without wiring...
 ![](Doc/setup.png)
 
-## Software
+> For this tutorial, the RN487x module is loaded with Firmware version 1.41
 
-- Download and install Atmel Studio 7.0 IDE. </br>
-https://www.microchip.com/mplab/avr-support/atmel-studio-7
+Purchase the <a href="https://www.microchip.com/Developmenttools/ProductDetails/DM320111" target="_blank">SAM R34 Xplained Pro Evaluation Kit</a>
+</br>
+![](Doc/ATSAMR34Xpro.png)
+</br>
 
-- Open Atmel Studio 7.0 IDE. </br>
-- Then, you need Advanced Software Framework (ASFv3) v3.45.0 release or upper release. </br>
-Install ASFv3 as an extension to Atmel Studio from the menu: Tools -> Extensions and Updates …
-- Once the installation is complete, you must restart Atmel Studio. </br>
-- Download and install a serial terminal program like Tera Term. </br>
-https://osdn.net/projects/ttssh2/releases/
+OR
 
-Note: ASFv3 is an MCU software library providing a large collection of embedded software for AVR® and SAM flash MCUs and Wireless devices. ASFv3 is configured by the ASF Wizard in Atmel Studio 7.0 (installed as an extension to Studio). ASFv3 is also available as a standalone (.zip) with the same content as Studio extension (https://www.microchip.com/mplab/avr-support/advanced-software-framework).
+Purchase the <a href="https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/EV23M25A" target="_blank">WLR089U0 Xplained Pro Evaluation Kit</a>
+</br>
+![](Doc/WLR089U0Xpro.png)
+</br>
 
-Important:
-Until the next Atmel Studio IDE release, you have to manually install the Device Part Pack for developing with SAMR34/R35 on Atmel Studio 7.0 IDE.
-(all products released in between IDE releases of Atmel Studio should be manually added by user to develop applications).
-- Go to Tools -> Device Pack Manager </br>
-- Check for Updates </br>
-- Search for SAMR34 and click install </br>
-- Repeat the same for SAMR35 </br>
-- Restart Atmel Studio 7.0 IDE </br>
+Purchase a LoRa(r) Gateway from <a href="https://www.thethingsnetwork.org/docs/gateways/" target="_blank">The Things Network</a>
+</br>
 
-## Hardware Setup
+## Software <a name="step2"></a>
+
+- Download and install [Microchip Studio 7.0 IDE](https://www.microchip.com/mplab/microchip-studio).
+- Open Microchip Studio 7.0 IDE.
+- From **Tools - > Extensions and updates**, install Advanced Software Framework (ASFv3) v3.49.1 release or upper release.
+- Restart Microchip Studio
+
+- Download and install a serial terminal program like [Tera Term](https://osdn.net/projects/ttssh2/releases/).
+
+## Hardware setup <a name="step3"></a>
 
 To demonstrate BLE applications as well as LoRaWAN end-device provisioning, follow the connection below :
 
@@ -96,7 +105,9 @@ The USB ports powers the board.
 - Connect the FTDI cable the host PC. A COM port will be mounted. This port mounted will be used to communicate with the kit. </br>
 - Launch Tera Term program and configure the serial ports mounted with: 115200 bps, 8/N/1 </br>
 
-## Mobile Apps
+> **If you are using a WLR089U0 Xplained Pro board, the hardware setup is exactly the same as for the SAMR34 Xpro board.**
+
+## Mobile Apps <a name="step4"></a>
 
 This demo requires:
 - Microchip Bluetooth Data (MBD) Apps for mobile
@@ -122,7 +133,7 @@ QRbot is available for Google device: https://play.google.com/store/apps/details
 </br>
 QRbot is available for Apple device: https://apps.apple.com/cy/app/qrbot/id1048473097
 
-## TTN Provisioning
+## TTN Provisioning <a name="step5"></a>
 
 - Log in to your TTN account
 - Go to the Console
@@ -140,7 +151,7 @@ You will needed later to generate the QR Code.
 You have done the provisioning of the end-device within the TTN Console.
 
 
-## Generating QR Code for End-device provisioning
+## Generating QR Code for End-device provisioning <a name="step6"></a>
 
 A QR Code will be used to provision the LoRaWAN OTAA parameters (DevEUI, AppEUI, AppKey) over BLE.
 
@@ -165,7 +176,7 @@ Copy the text.
 
 ![](Doc/QRbot_scan2.png)
 
-## BLE + LoRaWAN in a single Application
+## BLE + LoRaWAN in a single Application <a name="step7"></a>
 
 This project integrates the Microchip LoRaWAN Stack (MLS) Software API which provide an interface to the different software modules. </br></br>
 This application is based on LoRaWAN Mote Application generated from ASFv3 and already contains drivers required to interface the RN4870/71 module.
@@ -176,12 +187,12 @@ From the menu, you have the choice of the application:
 
 ![](Doc/ble_app_menu.png)
 
-## Tutorial
+## Run the demo <a name="step8"></a>
 
-- Start Atmel Studio 7 IDE
-- Open this project
-- From the Atmel Studio menu, go to: Build -> Build Solution
-- Flash the firmware on the ATSAMR34 Xplained Pro board
+- Start Microchip Studio 7 IDE
+- Open the project
+- From the menu, go to: Build -> Build Solution
+- Flash the firmware on the ATSAMR34 Xplained Pro board or onto the WLR089 Xpro
 - To get console logs through EDBG interface, open a Tera Term session with 115200 bps 8N1 configuration.
 - Reset the board
 - The application will start and should expose a menu if the interface with RN4870/71 module is correct</br>
