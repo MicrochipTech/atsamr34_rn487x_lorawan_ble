@@ -1,4 +1,6 @@
 # ATSAMR34_RN487x_LORAWAN_BLE
+<img src="Doc/IoT-Made-Easy-Logo.png" width=100>
+
 > “Wireless Made Easy!" - Adding BLE features & provisioning to an existing LoRaWAN Application
 
 <p>
